@@ -1,8 +1,4 @@
-# grafikom
-
-# grafikom
-
-Parameters
+# Parameters
 
 -lopengl32
 -lfreeglut

@@ -2,11 +2,13 @@
 #include <GL/glut.h>
 #include <GL/gl.h>
 #include <stdlib.h>
+#include <windows.h>
+#include <mmsystem.h>
 #define SPEED 20.0
 
 float i = 0.0, m = 0.0, n = 0.0, o = 0.0, c = 0.0;
 
-int light = 1, day = 1, plane = 0, comet = 0, xm = 900, tikus = 0;
+int light = 1, day = 1, plane = 0, comet = 0, xm = 900, mobil = 0;
 char ch;
 
 void declare(char *string)
@@ -145,7 +147,7 @@ void draw_object()
 	}
 
 
-	if (tikus == 1)
+	if (mobil == 1)
 	{
 //		glColor3f(0.329412, 0.329412, 0.329412); 
 //	    glBegin(GL_POLYGON);
@@ -206,10 +208,8 @@ void draw_object()
 void idle()
 {
 	glClearColor(1.0, 1.0, 1.0, 1.0);
-
 	if (light == 0 && (i >= 0 && i <= 1150))
 	{
-
 		i += SPEED / 10;
 		m += SPEED / 150;
 		n -= 2;
@@ -271,7 +271,7 @@ void keyboardFunc(unsigned char key, int x, int y)
 	{
 	case 't':
 	case 'T':
-		tikus = 1;
+		mobil = 1;
 		i = 0;
 		break;
 	};
@@ -301,6 +301,7 @@ void main_menu(int index)
 
 void myinit()
 {
+//	sndPlaySound("C:\\Users\\Fachri\\Documents\\breakout.mp3",SND_FILENAME);
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glColor3f(0.0, 0.0, 1.0);
 	glPointSize(2.0);
@@ -319,19 +320,19 @@ void display()
 int main(int argc, char **argv)
 {
 	int c_menu;
-	printf("--------------------------------------------------------------------------------");
-	printf("                    WELCOME TO TIKUS LIAR GAME                                  ");
-	printf("--------------------------------------------------------------------------------");
-	printf("Press 't' or 'T' Tikus will be shown.\n\n");
+	PlaySound(TEXT("breakout.wav"), NULL, SND_ASYNC);
+	printf("------------------------------------------------------");
+	printf("          WELCOME TO MOBIL LIAR GAME                  ");
+	printf("------------------------------------------------------");
+	printf("Press 't' or 'T' Mobil will be shown.\n\n");
 	printf("Press LEFT MOUSE BUTTON to quit the program. \n\n\n");
 	printf("Press any key and Hit ENTER.\n");
 	scanf("%s", &ch);
-
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 	glutInitWindowSize(1100.0, 700.0);
 	glutInitWindowPosition(0, 0);
-	glutCreateWindow("Tikus Liar");
+	glutCreateWindow("Mobil Liar");
 	glutDisplayFunc(display);
 	glutIdleFunc(idle);
 	glutKeyboardFunc(keyboardFunc);

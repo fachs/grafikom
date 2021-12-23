@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <mmsystem.h>
-#define SPEED 20.0
+#define SPEED 30.0
 
 float i = 0.0, m = 0.0, n = 0.0, o = 0.0, c = 0.0;
 
@@ -273,6 +273,7 @@ void keyboardFunc(unsigned char key, int x, int y)
 	case 'T':
 		mobil = 1;
 		i = 0;
+		PlaySound(TEXT("RB26 Turbo.wav"), NULL, SND_ASYNC|SND_LOOP);
 		break;
 	};
 }
